@@ -6,11 +6,12 @@ function convertValues() {
     const currencyValueToConvert = document.querySelector(".currency-value-to-convert") // Valor em Real
     const currencyValueConverted = document.querySelector(".currency-value") // Valor em Outras Moedas
 
-    
+
 
     const dolarToday = 5.2
     const euroToday = 6.2
     const libraToday = 6.5
+    const bitcoinToday = 205.941;
 
 
 
@@ -36,46 +37,56 @@ function convertValues() {
         }).format(inputCurrencyValue / libraToday)
     }
 
+    if (currencyAll.value == "biticoin") {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("cn-CN", {
+            style: "currency",
+            currency: "BTC"
+        }).format(inputCurrencyValue / bitcoinToday)
+    }
+
     currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
-        currency: "BRL" ,
+        currency: "BRL",
     }).format(inputCurrencyValue)
 
 
 }
 
-function changeCurrency(){
+function changeCurrency() {
     const currencyName = document.getElementById("currency-name")
     const currencyImg = document.querySelector(".currency-img")
 
-    
 
 
 
-    if(currencyAll.value == "dolar") {
+
+    if (currencyAll.value == "dolar") {
         currencyName.innerHTML = "Dólar"
-        currencyImg.src ="./assets/dolar (1).png"
-       
-         
-    }
-    
+        currencyImg.src = "./assets/dolar (1).png"
 
-    if (currencyAll.value == "euro"){
+    }
+
+
+    if (currencyAll.value == "euro") {
         currencyName.innerHTML = "Euro"
-        currencyImg.src ="./assets/euro.png"
+        currencyImg.src = "./assets/euro.png"
 
-        
-       
     }
 
-    if (currencyAll.value == "libra"){
+    if (currencyAll.value == "libra") {
         currencyName.innerHTML = "Libra"
-        currencyImg.src ="./assets/libra.png"
+        currencyImg.src = "./assets/libra.png"
 
-       
-       
     }
-    convertValues() 
+
+    if (currencyAll.value == "biticoin") {
+        currencyName.innerHTML = "Bitcoin"
+        currencyImg.src = "./assets/bitcoin.png"
+
+    }
+
+
+    convertValues()
 }
 currencyAll.addEventListener("change", changeCurrency)
 convertButton.addEventListener("click", convertValues)
